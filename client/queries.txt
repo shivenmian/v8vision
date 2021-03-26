@@ -1,0 +1,9 @@
+file:///E:/v8vision/client/index.html?dashboard
+
+file:///E:/v8vision/client/index.html?details=3
+
+file:///E:/v8vision/client/index.html?plots=3
+
+file:///E:/v8vision/client/index.html?plots=3&counters=c:V8.MemoryNewSpaceBytesCommitted,c:V8.MemoryOldSpaceBytesCommitted,c:V8.MemoryCodeSpaceBytesCommitted,c:V8.MemoryLoSpaceBytesCommitted,c:V8.MemoryMapSpaceBytesCommitted
+
+file:///E:/v8vision/client/index.html?plots=3&counters=c:V8.MemoryNewSpaceBytesUsed,c:V8.MemoryOldSpaceBytesUsed,c:V8.MemoryCodeSpaceBytesUsed,c:V8.MemoryLoSpaceBytesUsed,c:V8.MemoryMapSpaceBytesUsed

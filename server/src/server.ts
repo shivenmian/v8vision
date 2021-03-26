@@ -18,6 +18,8 @@ let instances_: any = []
 let detailspayload_: any = []
 let detailspayloadPending_: any = []
 
+let perfCountersMap_: any = []
+
 wss.on('connection', (ws: WebSocket, req) => {
     // @ts-ignore
     let query = req.url.split("/");
@@ -37,14 +39,11 @@ wss.on('connection', (ws: WebSocket, req) => {
         closed = true;
     });
 
-
     let onTick = () => {
         if (query[0] === 'dashboard') {
             // console.log(JSON.stringify(perfCounterCollections_));
             ws.send(JSON.stringify(instances_));
-        }
-
-        if (query[0] === 'details') {
+        } else if (query[0] === 'details') {
             let reqInstanceId = (query.length > 1) ? query[1] : 1;
 
             if (firstDetailsRequest
@@ -65,6 +64,16 @@ wss.on('connection', (ws: WebSocket, req) => {
                 detailspayload_[reqInstanceId] = detailspayload_[reqInstanceId].concat(detailspayloadPending_[reqInstanceId]);
                 detailspayloadPending_[reqInstanceId] = [];
             }
+        } else if (query[0] === 'plots') {
+            let reqInstanceId = (query.length > 1) ? query[1] : 1;
+            let counterNames = (query.length > 2) ? query[2].split(',') : ["c:V8.MemoryNewSpaceBytesCommitted"];
+
+            let payload: any = {}
+            counterNames.forEach(counterName => {
+                payload[counterName] = perfCountersMap_[reqInstanceId][counterName];
+            });
+            
+            ws.send(JSON.stringify(payload));
         }
 
         if (!closed) {
@@ -115,6 +124,7 @@ const rl = readline.createInterface({
     console: false
 });
 
+let startTime = -1;
 rl.on('line', (input: string) => {
     // console.log(`Received: ${input}`);
 
@@ -133,6 +143,14 @@ rl.on('line', (input: string) => {
         let trace = JSON.parse(match[1]);
         let instId = parseInt(trace.instanceId);
         let event = trace.meta.event;
+
+        let eventTime = trace.meta.time;
+        
+        if (startTime == -1) {
+            startTime = new Date(eventTime).getTime();
+        }
+
+        let eventTimeOffset = new Date(eventTime).getTime() - startTime;
 
         // DASHBOARD SCRIPTS
         if (event === "evaluateJavaScript" && trace.op === "start") {
@@ -221,6 +239,23 @@ rl.on('line', (input: string) => {
             perfCounterEntry['count'] = trace.count;
             perfCounterEntry['sample_total'] = trace.sample_total;
             perfCounterEntry['is_histogram'] = trace.is_histogram;
+
+            // Create maps for plots
+            if(!perfCountersMap_[instId]) {
+                perfCountersMap_[instId] = {}
+            }
+
+            let perfCountersMapInst = perfCountersMap_[instId]
+            if(!perfCountersMapInst[counterName]) {
+                perfCountersMapInst[counterName] = []
+            }
+
+            let perfCountersMapInst2 = perfCountersMapInst[counterName];
+            if(trace.is_histogram) {
+                perfCountersMapInst2.push([eventTimeOffset, trace.sample_total]);
+            } else {
+                perfCountersMapInst2.push([eventTimeOffset, trace.count]);
+            }
         }
 
         // FOR DETAILS

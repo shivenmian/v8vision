@@ -1,14 +1,50 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-google.charts.load('current', {'packages':['table']});
-// google.charts.setOnLoadCallback(drawTable);
-
+google.charts.load('current', { 'packages': ['table', 'corechart', 'line'] });
 
 // TODO :: Find a way to avoid keeping this global.
 const data = [];
 let dirty = false;
 
 var starttime = -1;
+
+let plotHostCache = {};
+function addPlotsData(payload) {
+    Object.keys(payload).forEach((key) => {
+        let values = payload[key];
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'time in millisecond');
+        data.addColumn('number', key);
+
+        data.addRows(values);
+
+        var options = {
+            hAxis: {
+                title: 'Time'
+            },
+            vAxis: {
+                title: key
+            }
+        };
+
+        
+        let host;
+        if(plotHostCache[key])
+            host = plotHostCache[key];
+        else {
+            host = document.createElement('div');
+            plotHostCache[key] = host;
+
+            document.body.appendChild(host);
+            document.body.appendChild(document.createElement("h1").appendChild(document.createTextNode(key)));
+        }
+        
+        var chart = new google.visualization.LineChart(host);
+        chart.draw(data, options);
+
+    });
+}
 
 function addData(payload) {
     payload.forEach((entry) => {
@@ -21,8 +57,6 @@ function addData(payload) {
         data.push({ x: t, y: entry })
         dirty = true;
     });
-
-
 }
 
 function displayInstance(instanceHostInner, key, value) {
@@ -30,50 +64,50 @@ function displayInstance(instanceHostInner, key, value) {
     let scriptsHeader = document.createElement('h3')
     scriptsHeader.appendChild(document.createTextNode("Instance Stats"))
     instanceHostInner.appendChild(scriptsHeader)
-    
+
     let statsHost = document.createElement('div')
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Name');
     data.addColumn('string', 'Value');
- 
+
     if (value["scripts"]) {
         data.addRows([
-            ['Loaded scripts',  JSON.stringify(value["scripts"])],
-          ]);
+            ['Loaded scripts', JSON.stringify(value["scripts"])],
+        ]);
     }
 
     if (value["funcCalls"]) {
         data.addRows([
-            ['Native to JS function calls',  value["funcCalls"].toString()],
-          ]);
+            ['Native to JS function calls', value["funcCalls"].toString()],
+        ]);
     }
 
     if (value["ctrCalls"]) {
         data.addRows([
-            ['Native to JS Constructor calls',  value["ctrCalls"].toString()],
-          ]);
+            ['Native to JS Constructor calls', value["ctrCalls"].toString()],
+        ]);
     }
 
     if (value["hostFuncCalls"]) {
         data.addRows([
-            ['JS to Native function calls',  value["hostFuncCalls"].toString()],
-          ]);
+            ['JS to Native function calls', value["hostFuncCalls"].toString()],
+        ]);
     }
 
     if (value["jits"]) {
         data.addRows([
-            ['Number of JIT operations',  value["jits"].toString()],
-          ]);
+            ['Number of JIT operations', value["jits"].toString()],
+        ]);
     }
 
     if (value["gcs"]) {
         data.addRows([
-            ['Number of garbage collections',  value["gcs"].toString()],
-          ]);
+            ['Number of garbage collections', value["gcs"].toString()],
+        ]);
     }
 
     var table = new google.visualization.Table(statsHost);
-    table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+    table.draw(data, { showRowNumber: true, width: '100%', height: '100%' });
     instanceHostInner.appendChild(statsHost);
 
     if (value["counters"]) {
@@ -86,16 +120,16 @@ function displayInstance(instanceHostInner, key, value) {
         counterData.addColumn('string', 'Counter Name');
         counterData.addColumn('number', 'Count');
         counterData.addColumn('number', 'Sample Total');
-        counterData.addColumn('boolean', 'Is Histogram?');  
+        counterData.addColumn('boolean', 'Is Histogram?');
 
         Object.keys(value["counters"]).forEach((entry) => {
             counterData.addRows([
-                [entry,  value["counters"][entry].count, value["counters"][entry].sample_total, value["counters"][entry].is_histogram]
-              ]);
+                [entry, value["counters"][entry].count, value["counters"][entry].sample_total, value["counters"][entry].is_histogram]
+            ]);
         });
 
         var counterTable = new google.visualization.Table(countersHost);
-        counterTable.draw(counterData, {showRowNumber: true, width: '100%', height: '100%'});
+        counterTable.draw(counterData, { showRowNumber: true, width: '100%', height: '100%' });
         instanceHostInner.appendChild(countersHost);
     }
 }
@@ -110,20 +144,20 @@ function addInstanceCounters(payload) {
             return;
 
         let instanceHostInner;
-        if(cache[key]) {
+        if (cache[key]) {
             instanceHostInner = cache[key];
         } else {
             let card = document.createElement('div');
             card.setAttribute("class", "card");
-            
+
             let data_header_target = "heading" + key;
             let cardHeader = document.createElement('div');
             cardHeader.setAttribute("class", data_header_target);
-            
+
             let cardHeaderInner = document.createElement('h2');
             cardHeaderInner.setAttribute("class", "mb-0");
             cardHeader.appendChild(cardHeaderInner);
-    
+
             let data_target = "collapse" + key;
             let button = document.createElement('button');
             button.setAttribute("class", "btn btn-link");
@@ -131,37 +165,37 @@ function addInstanceCounters(payload) {
             button.setAttribute("data-toggle", "collapse");
             button.setAttribute("data-target", "#" + data_target);
             cardHeaderInner.appendChild(button);
-    
+
             let headerText = document.createTextNode("Instance " + key);
             button.appendChild(headerText);
-           
+
             card.appendChild(cardHeader);
-    
+
             let cardBodyHostCollapsible = document.createElement('div');
             cardBodyHostCollapsible.setAttribute("id", data_target);
             cardBodyHostCollapsible.setAttribute("class", "collapse");
             cardBodyHostCollapsible.setAttribute("aria-labelledby", data_header_target);
             cardBodyHostCollapsible.setAttribute("data-parent", "#instancesHost");
-    
+
             let cardBody = document.createElement('div');
             cardBody.setAttribute("class", "card-body");
             cardBodyHostCollapsible.appendChild(cardBody);
-    
+
             instanceHostInner = document.createElement('div')
             cardBody.appendChild(instanceHostInner);
-    
+
             card.appendChild(cardBodyHostCollapsible);
             instanceHost.appendChild(card);
 
             cache[key] = instanceHostInner;
         }
-        
+
         instanceHostInner.innerHTML = '';
         displayInstance(instanceHostInner, key, payload[key]);
     });
 }
 
-function dataFetch(addFunc) {
+function dataFetch() {
 
     var noseed = true;
     if (!noseed) {
@@ -174,11 +208,19 @@ function dataFetch(addFunc) {
     var nows = false;
     if ("WebSocket" in window && !nows) {
         var ws;
+        var addFunc;
         if (urlParams.get('dashboard') != null) {
             ws = new WebSocket("ws://localhost:8998/dashboard");
+            addFunc = addInstanceCounters;
         } else if (urlParams.get('details') != null) {
             let instanceId = urlParams.get('details');
-            ws = new WebSocket("ws://localhost:8998/details/" + urlParams.get('details'));
+            ws = new WebSocket("ws://localhost:8998/details/" + instanceId);
+            addFunc = addData;
+        } else if (urlParams.get('plots') != null) {
+            let instanceId = urlParams.get('plots') ?  urlParams.get('plots') : 1;
+            let counters = urlParams.get('counters') ? urlParams.get('counters') : "c:V8.MemoryNewSpaceBytesCommitted,c:V8.MemoryOldSpaceBytesCommitted,c:V8.MemoryCodeSpaceBytesCommitted,c:V8.MemoryLoSpaceBytesCommitted";
+            ws = new WebSocket("ws://localhost:8998/plots/" + instanceId + "/" + counters);
+            addFunc = addPlotsData;
         }
 
         ws.onopen = function () {
@@ -377,9 +419,7 @@ function run() {
     });
 }
 
-if (urlParams.get('dashboard') != null) {
-    dataFetch(addInstanceCounters);
-} else if (urlParams.get('details') != null) {
+dataFetch();
+if (urlParams.get('details') != null) {
     run();
-    dataFetch(addData);
 }
