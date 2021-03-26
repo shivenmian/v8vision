@@ -3,158 +3,77 @@
 <html>
 
 <head>
-   <script src="E:\\v8vision\\client\\d3\\d3.js"></script>
+   <!-- <script src="E:\\v8vision\\client\\d3\\d3.js"></script> -->
+   <script src="https://d3js.org/d3.v5.min.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="style.css">
-
-   <script type="text/javascript">
-      data = []
-      counter = 0;
-      var starttime = -1;
-      var batchSize = 0;
-
-      function run() {
-
-         // set the dimensions and margins of the graph
-         var margin = { top: 10, right: 40, bottom: 30, left: 30 },
-             width = 600 - margin.left - margin.right,
-             height = 400 - margin.top - margin.bottom;
-
-         var svg = d3
-            .select("body")
-            .append("div")
-            // Container class to make it responsive.
-            .classed("svg-container", true) 
-            .append("svg")
-            // Responsive SVG needs these 2 attributes and no width and height attr.
-            .attr("preserveAspectRatio", "xMinYMin meet")
-            .attr("viewBox", "0 0 600 400")
-            // Class to make it responsive.
-            .classed("svg-content-responsive", true)
-            // Fill with a rectangle for visualization.
-            // .attr("width", width + margin.left + margin.right)
-            // .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-               "translate(" + margin.left + "," + margin.top + ")");
-
-         // X scale and Axis
-         // 60 * 1000 => 60 s
-         var x = d3.scaleLinear()
-            .domain([0, 60 * 1000])         // This is the min and the max of the data: 0 to 100 if percentages
-            .range([0, width]);       // This is the corresponding value I want in Pixel
-         svg
-            .append('g')
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
-
-         // Y scale and Axis
-         var y = d3.scaleLinear()
-            .domain([0, 100])         // This is the min and the max of the data: 0 to 100 if percentages
-            .range([height, 0]);       // This is the corresponding value I want in Pixel
-         svg
-            .append('g')
-            .call(d3.axisLeft(y));
-
-         const tip = d3
-            .select('body')
-            .append('div')
-            .attr('class', 'tooltip');
-
-         window.setInterval(function(){ 
-            svg
-                  .selectAll("whatever")
-                  .data(data)
-                  .join(
-                     function (enter) {
-                        return enter
-                           .append("circle")
-                           .attr("cx", function (d) {
-                              return x(d.x)
-                           })
-                           .attr("cy", function (d) {
-                              if(d.y.evt === "V8::JIT")
-                                 return y(5)
-                              if(d.y.evt === "V8::GCPrologueCallback")
-                                 return y(10)
-                              if(d.y.evt === "CallFunction")
-                                 return y(15)
-                              if(d.y.evt === "HostFunctionCallback")
-                                 return y(20)
-                              return y(25)
-                           })
-                           .attr("r", 1)
-                           .on('mousemove', d => {
-                              tip
-                                 .style('position', 'absolute')
-                                 // .style('left', `${d3.event.pageX + 10}px`)
-                                 // .style('top', `${d3.event.pageY + 20}px`)
-                                 .style('display', 'inline-block')
-                                 .style('opacity', '0.9')
-                                 .html(
-                                    `<div><strong>${d.name}</strong></div> <span>${d.votes} votes</span>`
-                                 );
-                           })
-                           .on('mouseout', () => tip.style('display', 'none'));
-                     },
-                     function (update) {
-                     },
-                     function (exit) {
-                     }
-                  );
-          }, 1000);
-
-         if ("WebSocket" in window) {
-            // alert("WebSocket is supported by your Browser!");
-
-            // Let us open a web socket
-            var ws = new WebSocket("ws://localhost:8998/echo");
-
-            ws.onopen = function () {
-               // Web Socket is connected, send data using send()
-               // ws.send("Message to send");
-               // window.data.push({ x: 10, y: 20 });
-            };
-
-            ws.onmessage = function (evt) {
-               var received_msg = evt.data;
-
-               var payload = JSON.parse(received_msg);
-               // if (payload.evt !== "V8::JIT")
-               //   return;
-               
-               if (payload.instId != 3)
-                  return;
-
-               var t = new Date(payload.ts).getTime();
-               if(starttime == -1) {
-                  starttime = t;
-               }
-               t = t - starttime;
-               
-               data.push({ x: t, y: payload })
-            };
-
-            ws.onclose = function () {
-               alert("Connection is closed...");
-            };
-         } else {
-
-            // The browser doesn't support WebSocket
-            alert("WebSocket NOT supported by your Browser!");
-         }
-      }
-   </script>
-
 </head>
 
 <body>
-   <div id="sse">
-      <a href="javascript:run()">Run</a> <br />
+
+   <!-- <div class="container">
+      <h2>Accordion Example</h2>
+      
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+          </div>
+        </div>
+      </div> 
+    </div> -->
+
+   <div class="accordion" id="instancesHost">
+
    </div>
 
+   <div class="tooltip">
+      <div class="tip-header">
+         <h3>text</h3>
+         <h4>text</h4>
+      </div>
+      <div class="tip-body"></div>
+   </div>
+
+   <!-- Loading in your Javascript logic -->
+   <script src="app.js"></script>
 </body>
 
 </html>

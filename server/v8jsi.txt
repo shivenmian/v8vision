@@ -1,0 +1,124 @@
+E:\v8vision\server>node .\dist\server.js
+Server started on port 8998 :)
+Setting log file to: E:\v8vision\server\etl\rnw_20210324_133600.etl
+Examining C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x86\default.tmf for message formats,  3 found.
+Searching for TMF files on path: E:\v8vision\server
+Logfile E:\v8vision\server\etl\rnw_20210324_133600.etl:
+        OS version              10.0.19042  (Currently running on 10.0.19042)
+        Start Time              2021-03-24-13:36:00.642
+        End Time                2021-03-24-13:36:18.752
+        Timezone is             @tzres.dll,-212 (Bias is 480mins)
+        BufferSize              65536 B
+        Maximum File Size       0 MB
+        Buffers  Written        2
+        Logger Mode Settings    (0) Logfile Mode is not set
+        ProcessorCount          12
+> [7]8854.3914::03/24/2021-13:36:12.605 [Microsoft.V8JSIRuntime]{"instanceId":1,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"Initializing","time":"2021-03-24T13:36:12.605","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"Initializing","ts":"2021-03-24T13:36:12.605","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.608 [Microsoft.V8JSIRuntime]{"instanceId":1,"op":"start","meta":{"provider":"Microsoft.V8JSIRuntime","event":"CreateNewIsolate","time":"2021-03-24T13:36:12.608","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"CreateNewIsolate","ts":"2021-03-24T13:36:12.608","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.633 [Microsoft.V8JSIRuntime]{"instanceId":1,"op":"end","meta":{"provider":"Microsoft.V8JSIRuntime","event":"CreateNewIsolate","time":"2021-03-24T13:36:12.633","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"CreateNewIsolate","ts":"2021-03-24T13:36:12.633","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.633 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"isolate_created","cookie":1,"name":"c:V8.ObjsSinceLastFull","count":7166,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.633","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.633","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.633 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"isolate_created","cookie":1,"name":"c:V8.ObjsSinceLastYoung","count":7166,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.633","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.633","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.633 [Microsoft.V8JSIRuntime]{"instanceId":1,"op":"start","meta":{"provider":"Microsoft.V8JSIRuntime","event":"CreateContext","time":"2021-03-24T13:36:12.633","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"CreateContext","ts":"2021-03-24T13:36:12.633","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.636 [Microsoft.V8JSIRuntime]{"instanceId":0,"type":"CODE_END_LINE_INFO_RECORDING","cookie":"BYTE_CODE","code_details":"7:0:12:7:12:7:21:34:21:34:","meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::JIT","time":"2021-03-24T13:36:12.636","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":0,"evt":"V8::JIT","ts":"2021-03-24T13:36:12.636","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.636 [Microsoft.V8JSIRuntime]{"instanceId":0,"type":"CODE_ADDED","cookie":"BYTE_CODE","name":"Script:~ v8/statistics:1","meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::JIT","time":"2021-03-24T13:36:12.636","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":0,"evt":"V8::JIT","ts":"2021-03-24T13:36:12.636","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"op":"end","meta":{"provider":"Microsoft.V8JSIRuntime","event":"CreateContext","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"CreateContext","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.MapsCreated","count":89,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"V8.CompileScript.CacheBehaviour","count":1,"sample_total":13,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.TotalBaselineCodeSize","count":100,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.TotalBaselineCompileCount","count":1,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"V8.CompileScriptMicroSeconds","count":1,"sample_total":947,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"V8.CompileMicroSeconds","count":1,"sample_total":563,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.TotalLoadSize","count":34,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.ObjsSinceLastFull","count":8975,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"V8.CompileScriptMicroSeconds.NoCache.Other","count":1,"sample_total":948,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.ObjsSinceLastYoung","count":8975,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.ConstructedObjects","count":3,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.ContextsCreatedBySnapshot","count":1,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.ConstructedObjectsRuntime","count":3,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.TotalCompileSize","count":34,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"context_created","cookie":2,"name":"c:V8.TotalParseSize","count":34,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":1,"op":"start","sourceURL":"MyJS","meta":{"provider":"Microsoft.V8JSIRuntime","event":"evaluateJavaScript","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"evaluateJavaScript","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.637 [Microsoft.V8JSIRuntime]{"instanceId":0,"type":"CODE_ADDED","cookie":"BYTE_CODE","name":"Script:~ MyJS:1","meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::JIT","time":"2021-03-24T13:36:12.637","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":0,"evt":"V8::JIT","ts":"2021-03-24T13:36:12.637","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"op":"end","sourceURL":"MyJS","meta":{"provider":"Microsoft.V8JSIRuntime","event":"evaluateJavaScript","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"evaluateJavaScript","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.MapsCreated","count":105,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"V8.CompileScript.CacheBehaviour","count":2,"sample_total":20,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.TotalBaselineCodeSize","count":184,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.TotalBaselineCompileCount","count":2,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"V8.CompileScriptMicroSeconds","count":2,"sample_total":1108,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"V8.CompileMicroSeconds","count":2,"sample_total":640,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"V8.Execute","count":1,"sample_total":1589,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.TotalLoadSize","count":51,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.ObjsSinceLastFull","count":9110,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"V8.CompileScriptMicroSeconds.NoCache.Other","count":2,"sample_total":1110,"is_histogram":true,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.ObjsSinceLastYoung","count":9110,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.ConstructedObjects","count":4,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.ContextsCreatedBySnapshot","count":1,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.ConstructedObjectsRuntime","count":4,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.TotalCompileSize","count":51,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.TotalParseSize","count":51,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.GlobalHandles","count":8,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.MapsNormalized","count":1,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.ObjectPropertiesToDictionary","count":7,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+> [7]8854.3914::03/24/2021-13:36:12.639 [Microsoft.V8JSIRuntime]{"instanceId":1,"when":"script evaluated","cookie":3,"name":"c:V8.CompilationCacheMisses","count":1,"sample_total":0,"is_histogram":false,"meta":{"provider":"Microsoft.V8JSIRuntime","event":"V8::PerfCounters","time":"2021-03-24T13:36:12.639","cpu":7,"pid":34900,"tid":14612,"channel":11,"level":5}}
+{"instId":1,"evt":"V8::PerfCounters","ts":"2021-03-24T13:36:12.639","pid":34900,"tid":14612}
+Files Processed:
+        E:\v8vision\server\etl\rnw_20210324_133600.etl
+Total Buffers Processed 2
+Total Events  Processed 49
+Total Events  Lost      0
+Total Format  Errors    0
+Total Formats Unknown   0
+Elapsed Time            18 sec
++-----------------------------------------------------------------------------------+
+|EventCount    EventName            EventType   TMF                                 |
+
++-----------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------+
+
+Processing completed   Buffers: 2, Events: 49, EventsLost: 0 :: Format Errors: 0, Unknowns: 0

@@ -14,10 +14,19 @@
     left: 0;
   }
 
-.tooltip {
-    opacity: 0;
-    background-color: rgb(170, 204, 247);
-    padding: 5px;
-    border-radius: 4px;
-    transition: opacity 0.2s ease;
+  .tooltip {
+    position: fixed;
+    opacity: 100;
+    pointer-events: none;
+    background: #eee;
+    max-width: 200px;
+  }
+
+  .axis path {
+    display: none;
+  }
+  
+  .axis line {
+    stroke-opacity: 0.3;
+    shape-rendering: crispEdges;
   }
