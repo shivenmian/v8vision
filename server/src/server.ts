@@ -2,6 +2,8 @@ import * as express from 'express';
 import * as http from 'http';
 import * as WebSocket from 'ws';
 
+const PATH_TO_V8VISION = "C:\\Users\\shivenmian\\v8vision";
+
 const { spawn } = require('child_process');
 const readline = require('readline');
 
@@ -42,6 +44,7 @@ wss.on('connection', (ws: WebSocket, req) => {
     let onTick = () => {
         if (query[0] === 'dashboard') {
             // console.log(JSON.stringify(perfCounterCollections_));
+            console.log(instances_);
             ws.send(JSON.stringify(instances_));
         } else if (query[0] === 'details') {
             let reqInstanceId = (query.length > 1) ? query[1] : 1;
@@ -98,7 +101,7 @@ server.listen(process.env.PORT || 8998, () => {
 
 // DATA FETCH
 // const source = spawn('C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x86\\tracefmt.exe', ['-displayonly', 'E:\\v8vision\\server\\etl\\v8jsiapp_multiple.etl']); // (A)
-const source = spawn('C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x86\\tracefmt.exe', ['-displayonly', 'E:\\v8vision\\server\\etl\\rnw_20210325_195038.etl']); // (A)
+const source = spawn('C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x86\\tracefmt.exe', ['-displayonly', PATH_TO_V8VISION + "\\server\\etl\\rnw_20210325_195038.etl"]); // (A)
 // const source = spawn('powershell.exe', ['E:\\github\\v8-jsi-mgan\\scripts\\tracing\\trace.ps1']); // (A)
 source.stdout.setEncoding('utf8');
 

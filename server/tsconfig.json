@@ -5,6 +5,7 @@
         "outDir": "./dist",
         "strict": true,
         "sourceMap": true,
+        "rootDir": "src",
         "typeRoots": [
             "node_modules/@types"
         ]
