@@ -176,6 +176,17 @@ rl.on('line', (input: string) => {
             }
 
             instances_[instId]["funcCalls"]++;
+
+            if (!instances_[instId]["funcCallsCounts"]) {
+                instances_[instId]["funcCallsCounts"] = {};
+            }
+
+            if (!instances_[instId]["funcCallsCounts"][trace.name]){
+                instances_[instId]["funcCallsCounts"][trace.name] = 0;
+            }
+
+            instances_[instId]["funcCallsCounts"][trace.name]++;
+            
         } else if (event === "CallConstructor" && trace.op === "start") {
             if (!instances_[instId]) {
                 instances_[instId] = {}

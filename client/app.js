@@ -82,6 +82,12 @@ function displayInstance(instanceHostInner, key, value) {
         ]);
     }
 
+    if (value["funcCallsCounts"]) {
+        data.addRows([
+            ['Native to JS function calls counts', JSON.stringify(value["funcCallsCounts"])],
+        ]);
+    }
+
     if (value["ctrCalls"]) {
         data.addRows([
             ['Native to JS Constructor calls', value["ctrCalls"].toString()],
