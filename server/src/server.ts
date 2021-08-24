@@ -16,7 +16,7 @@ const wss = new WebSocket.Server({ server });
 
 // [{"scripts": [], "counters": {}]
 let instances_: any = []
-
+let bundleLoadTimes: any = {}
 let detailspayload_: any = []
 let detailspayloadPending_: any = []
 
@@ -156,16 +156,32 @@ rl.on('line', (input: string) => {
         let eventTimeOffset = new Date(eventTime).getTime() - startTime;
 
         // DASHBOARD SCRIPTS
-        if (event === "evaluateJavaScript" && trace.op === "start") {
+        if (event === "evaluateJavaScript") {
             if (!instances_[instId]) {
                 instances_[instId] = {}
             }
 
             if (!instances_[instId]["scripts"]) {
-                instances_[instId]["scripts"] = [];
+                instances_[instId]["scripts"] = {};
             }
 
-            instances_[instId]["scripts"].push(trace.sourceURL);
+            if (!bundleLoadTimes[instId]){
+                bundleLoadTimes[instId] = {}
+            }
+
+            if (!bundleLoadTimes[instId]["total"]){
+                bundleLoadTimes[instId]["total"] = 0
+            }
+
+            if (!bundleLoadTimes[instId][trace.sourceURL]) {
+                bundleLoadTimes[instId][trace.sourceURL] = new Date(trace.meta.time).getTime();
+            } else {
+                bundleLoadTimes[instId][trace.sourceURL] = new Date(trace.meta.time).getTime() - bundleLoadTimes[instId][trace.sourceURL];
+                bundleLoadTimes[instId]["total"] += bundleLoadTimes[instId][trace.sourceURL]
+                instances_[instId]["scripts"][trace.sourceURL] = bundleLoadTimes[instId][trace.sourceURL];
+                instances_[instId]["scripts"]["total"] = bundleLoadTimes[instId]["total"]
+            }
+
         } else if (event === "CallFunction" && trace.op === "start") {
             if (!instances_[instId]) {
                 instances_[instId] = {}
