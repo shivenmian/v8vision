@@ -169,17 +169,11 @@ rl.on('line', (input: string) => {
                 bundleLoadTimes[instId] = {}
             }
 
-            if (!bundleLoadTimes[instId]["total"]){
-                bundleLoadTimes[instId]["total"] = 0
-            }
-
             if (!bundleLoadTimes[instId][trace.sourceURL]) {
                 bundleLoadTimes[instId][trace.sourceURL] = new Date(trace.meta.time).getTime();
             } else {
                 bundleLoadTimes[instId][trace.sourceURL] = new Date(trace.meta.time).getTime() - bundleLoadTimes[instId][trace.sourceURL];
-                bundleLoadTimes[instId]["total"] += bundleLoadTimes[instId][trace.sourceURL]
                 instances_[instId]["scripts"][trace.sourceURL] = bundleLoadTimes[instId][trace.sourceURL];
-                instances_[instId]["scripts"]["total"] = bundleLoadTimes[instId]["total"]
             }
 
         } else if (event === "CallFunction" && trace.op === "start") {

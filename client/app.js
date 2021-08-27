@@ -59,6 +59,144 @@ function addData(payload) {
     });
 }
 
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+function displayInstanceTabs(instanceHostInner, key, value) {
+
+    let tabView = document.createElement('div');
+    tabView.setAttribute('class', 'tab');
+    instanceHostInner.appendChild(tabView);
+
+    // evaluateJS bundles
+
+    let scriptsTab = document.createElement('button');
+    scriptsTab.setAttribute('class', 'tablinks');
+    scriptsTab.setAttribute('onclick', "openCity(event, 'scripts')")
+    scriptsTab.appendChild(document.createTextNode("JavaScript bundles"))
+    tabView.appendChild(scriptsTab);
+
+    let scriptsDiv = document.createElement('div');
+    scriptsDiv.setAttribute('id', 'scripts');
+    scriptsDiv.setAttribute('class', 'tabcontent');
+    instanceHostInner.appendChild(scriptsDiv);
+
+    // bridge calls
+
+    let bridgeTab = document.createElement('button');
+    bridgeTab.setAttribute('class', 'tablinks');
+    bridgeTab.setAttribute('onclick', "openCity(event, 'bridge')")
+    bridgeTab.appendChild(document.createTextNode("Native and JS bridge functions"))
+    tabView.appendChild(bridgeTab);
+
+    let bridgeDiv = document.createElement('div');
+    bridgeDiv.setAttribute('id', 'bridge');
+    bridgeDiv.setAttribute('class', 'tabcontent');
+    instanceHostInner.appendChild(bridgeDiv);
+
+    // JIT and GC
+
+    // let bridgeTab = document.createElement('button');
+    // bridgeTab.setAttribute('class', 'tablinks');
+    // bridgeTab.setAttribute('onclick', "openCity(event, 'bridge')")
+    // bridgeTab.appendChild(document.createTextNode("Native and JS bridge functions"))
+    // tabView.appendChild(bridgeTab);
+
+    // let bridgeDiv = document.createElement('div');
+    // bridgeDiv.setAttribute('id', 'bridge');
+    // bridgeDiv.setAttribute('class', 'tabcontent');
+
+    // let bridgeHeader = document.createElement('h3');
+    // bridgeHeader.appendChild(document.createTextNode('Native and JS bridge functions'));
+    // bridgeDiv.appendChild(bridgeHeader);
+    // instanceHostInner.appendChild(bridgeDiv);
+
+    // V8 perf counters
+
+    //console.log(value["scripts"]);
+    
+    if (!isEmpty(value["scripts"])) {
+
+        // create the table
+        var bundleData = new google.visualization.DataTable();
+        bundleData.addColumn('string', 'Bundle');
+        bundleData.addColumn('number', 'Time (milliseconds)');
+        let totalBundleLoadTime = 0;
+
+        Object.keys(value["scripts"]).forEach((entry) => {
+            console.log(entry, value["scripts"][entry]);
+            bundleData.addRows([[entry, value["scripts"][entry]]]);
+            totalBundleLoadTime += value["scripts"][entry];
+        });
+
+        bundleData.addRows([["Total Load Time", totalBundleLoadTime]]);
+
+        // add it to the view
+        let scriptsHeader = document.createElement('h3');
+        scriptsHeader.appendChild(document.createTextNode('JavaScript bundles'));
+        scriptsDiv.appendChild(scriptsHeader);
+
+        let scriptsTableDiv = document.createElement('div');
+        var bundleTable = new google.visualization.Table(scriptsTableDiv);
+        bundleTable.draw(bundleData, { showRowNumber: true, width: '100%', height: '100%' });
+        scriptsDiv.appendChild(scriptsTableDiv);
+
+    }
+
+
+    // bridge functions
+
+    if (value["funcCalls"]) {
+
+        console.log(value["funcCalls"]);
+        // create the table
+
+        var bridgeData = new google.visualization.DataTable();
+        bridgeData.addColumn('string', 'Function Name')
+        bridgeData.addColumn('number', 'Number of calls')
+
+        Object.keys(value["funcCallsCounts"]).forEach((entry) => {
+            bridgeData.addRows([[entry, value["funcCallsCounts"][entry]]]);
+        });
+
+        bridgeData.addRows([["Total number of calls", value["funcCalls"]]]);
+
+        let bridgeHeader = document.createElement('h3');
+        bridgeHeader.appendChild(document.createTextNode('Native to JS'));
+        bridgeDiv.appendChild(bridgeHeader);
+
+        let bridgeTableDiv = document.createElement('div');
+        var bridgeTable = new google.visualization.Table(bridgeTableDiv);
+        bridgeTable.draw(bridgeData, { showRowNumber: true, width: '100%', height: '100%' });
+        bridgeDiv.appendChild(bridgeTableDiv);
+    }
+
+    // WIP
+
+}
+
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
 function displayInstance(instanceHostInner, key, value) {
 
     let scriptsHeader = document.createElement('h3')
@@ -188,6 +326,7 @@ function addInstanceCounters(payload) {
             cardBodyHostCollapsible.appendChild(cardBody);
 
             instanceHostInner = document.createElement('div')
+            
             cardBody.appendChild(instanceHostInner);
 
             card.appendChild(cardBodyHostCollapsible);
@@ -197,7 +336,8 @@ function addInstanceCounters(payload) {
         }
 
         instanceHostInner.innerHTML = '';
-        displayInstance(instanceHostInner, key, payload[key]);
+        // displayInstance(instanceHostInner, key, payload[key]);
+        displayInstanceTabs(instanceHostInner, key, payload[key]);
     });
 }
 
