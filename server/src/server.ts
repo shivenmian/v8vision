@@ -101,7 +101,7 @@ server.listen(process.env.PORT || 8998, () => {
 
 // DATA FETCH
 // const source = spawn('C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x86\\tracefmt.exe', ['-displayonly', 'E:\\v8vision\\server\\etl\\v8jsiapp_multiple.etl']); // (A)
-const source = spawn('C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x86\\tracefmt.exe', ['-displayonly', PATH_TO_V8VISION + "\\server\\etl\\rnw_20210325_195038.etl"]); // (A)
+const source = spawn('C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x86\\tracefmt.exe', ['-displayonly', PATH_TO_V8VISION + "\\server\\etl\\rnw_20210902_142709.etl"]); // (A)
 // const source = spawn('powershell.exe', ['E:\\github\\v8-jsi-mgan\\scripts\\tracing\\trace.ps1']); // (A)
 source.stdout.setEncoding('utf8');
 

@@ -72,26 +72,29 @@ function displayInstanceTabs(instanceHostInner, key, value) {
     // evaluateJS bundles
 
     let scriptsTab = document.createElement('button');
+    let scriptsId = 'scripts' + key;
+    console.log(scriptsId);
     scriptsTab.setAttribute('class', 'tablinks');
-    scriptsTab.setAttribute('onclick', "openCity(event, 'scripts')")
+    scriptsTab.setAttribute('onclick', "openCity(event, '" + scriptsId + "')");
     scriptsTab.appendChild(document.createTextNode("JavaScript bundles"))
     tabView.appendChild(scriptsTab);
 
     let scriptsDiv = document.createElement('div');
-    scriptsDiv.setAttribute('id', 'scripts');
+    scriptsDiv.setAttribute('id', scriptsId);
     scriptsDiv.setAttribute('class', 'tabcontent');
     instanceHostInner.appendChild(scriptsDiv);
 
     // bridge calls
 
     let bridgeTab = document.createElement('button');
+    let bridgeId = 'bridge' + key;
     bridgeTab.setAttribute('class', 'tablinks');
-    bridgeTab.setAttribute('onclick', "openCity(event, 'bridge')")
+    bridgeTab.setAttribute('onclick', "openCity(event, '" + bridgeId + "')");
     bridgeTab.appendChild(document.createTextNode("Native and JS bridge functions"))
     tabView.appendChild(bridgeTab);
 
     let bridgeDiv = document.createElement('div');
-    bridgeDiv.setAttribute('id', 'bridge');
+    bridgeDiv.setAttribute('id', bridgeId);
     bridgeDiv.setAttribute('class', 'tabcontent');
     instanceHostInner.appendChild(bridgeDiv);
 
